@@ -1,0 +1,23 @@
+# Local environment and secrets
+**/.env
+**/.env.*
+!**/.env.example
+
+# Dependencies and build output
+**/vendor/
+**/node_modules/
+**/dist/
+
+# Local database and runtime files
+backend/database/*.sqlite
+backend/storage/logs/*
+backend/storage/framework/cache/data/*
+backend/storage/framework/sessions/*
+backend/storage/framework/views/*
+backend/bootstrap/cache/*.php
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json

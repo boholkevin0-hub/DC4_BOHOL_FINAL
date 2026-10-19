@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="650" viewBox="0 0 1040 650" role="img" aria-labelledby="title description">
+  <title id="title">Student Document Portal entity relationship diagram</title>
+  <desc id="description">Users submit document requests for document types. Administrators create status history records for document requests.</desc>
+  <defs>
+    <style>
+      text { font-family: Segoe UI, Arial, sans-serif; fill: #20324d; }
+      .box { fill: #ffffff; stroke: #3478e5; stroke-width: 2; rx: 12; }
+      .head { fill: #eaf2ff; }
+      .line { stroke: #71839c; stroke-width: 2; fill: none; }
+      .label { font-size: 14px; fill: #526176; }
+      .title { font-size: 18px; font-weight: 700; }
+      .field { font-size: 14px; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#71839c"/>
+    </marker>
+  </defs>
+  <rect width="1040" height="650" fill="#f4f7fb"/>
+  <text x="40" y="45" font-size="25" font-weight="700">Student Document Portal — ERD</text>
+
+  <g transform="translate(45 100)">
+    <rect class="box" width="260" height="200"/>
+    <path class="head" d="M12 0h236a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="title" x="18" y="32">users</text>
+    <text class="field" x="18" y="78">PK id</text>
+    <text class="field" x="18" y="106">name, email, password</text>
+    <text class="field" x="18" y="134">role (student | admin)</text>
+    <text class="field" x="18" y="162">timestamps</text>
+  </g>
+
+  <g transform="translate(390 100)">
+    <rect class="box" width="300" height="270"/>
+    <path class="head" d="M12 0h276a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="title" x="18" y="32">document_requests</text>
+    <text class="field" x="18" y="78">PK id</text>
+    <text class="field" x="18" y="106">FK user_id → users.id</text>
+    <text class="field" x="18" y="134">FK document_type_id → document_types.id</text>
+    <text class="field" x="18" y="162">student_name, purpose</text>
+    <text class="field" x="18" y="190">date_submitted, status</text>
+    <text class="field" x="18" y="218">legacy document_type label</text>
+    <text class="field" x="18" y="246">timestamps</text>
+  </g>
+
+  <g transform="translate(760 100)">
+    <rect class="box" width="240" height="200"/>
+    <path class="head" d="M12 0h216a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="title" x="18" y="32">document_types</text>
+    <text class="field" x="18" y="78">PK id</text>
+    <text class="field" x="18" y="106">name (unique)</text>
+    <text class="field" x="18" y="134">description</text>
+    <text class="field" x="18" y="162">is_active</text>
+  </g>
+
+  <g transform="translate(390 435)">
+    <rect class="box" width="300" height="175"/>
+    <path class="head" d="M12 0h276a12 12 0 0 1 12 12v38H0V12A12 12 0 0 1 12 0z"/>
+    <text class="title" x="18" y="32">document_request_status_histories</text>
+    <text class="field" x="18" y="78">PK id</text>
+    <text class="field" x="18" y="106">FK document_request_id</text>
+    <text class="field" x="18" y="134">FK changed_by → users.id</text>
+    <text class="field" x="18" y="162">from_status, to_status, timestamps</text>
+  </g>
+
+  <path class="line" marker-end="url(#arrow)" d="M305 200 H390"/>
+  <text class="label" x="325" y="188">1 : many</text>
+  <path class="line" marker-end="url(#arrow)" d="M760 200 H690"/>
+  <text class="label" x="706" y="188">1 : many</text>
+  <path class="line" marker-end="url(#arrow)" d="M520 370 V435"/>
+  <text class="label" x="528" y="410">1 : many</text>
+  <path class="line" marker-end="url(#arrow)" d="M175 300 V520 H390"/>
+  <text class="label" x="190" y="510">admin records changes</text>
+</svg>
